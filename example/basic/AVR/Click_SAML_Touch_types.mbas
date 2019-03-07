@@ -1,0 +1,21 @@
+module Click_SAML_Touch_types
+
+typedef uint8_t                 as byte
+typedef int8_t                  as short
+typedef uint16_t                as word
+typedef int16_t                 as integer
+typedef uint32_t                as longword
+typedef int32_t                 as longint
+
+typedef T_SAMLTOUCH_P       as ^const uint8_t
+
+structure samltouch_state_T
+
+    dim button1            as uint8_t
+    dim button2            as uint8_t
+    dim sw_state           as uint8_t
+	dim sw_pos             as uint16_t
+
+end structure
+
+end.

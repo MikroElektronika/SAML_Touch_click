@@ -1,0 +1,25 @@
+'
+' Use mikroE Timer Calculator to generate proper timer configuration
+' and timer ISR.
+'
+' https://www.mikroe.com/timer-calculator
+'
+module Click_SAML_Touch_timer
+
+include Click_SAML_Touch_types
+    
+sub procedure samltouch_configTimer() 
+
+implements
+
+sub procedure samltouch_configTimer() 
+
+end sub
+
+sub procedure Timer_interrupt() 
+
+    samltouch_tick() 
+
+end sub
+
+end.

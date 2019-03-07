@@ -1,0 +1,25 @@
+0	1	mikroCPIC1618.exe -MSF -DBG -pP18F87K22 -DL -O11111114 -fo64 -N"D:\Clicks_git\S\SAML10_Touch_Click\SW\example\c\PIC\Click_SAML_Touch_PIC.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -SP"D:\Clicks_git\S\SAML10_Touch_Click\SW\example\c\PIC\" -SP"D:\Clicks_git\S\SAML10_Touch_Click\SW\library\HAL\" -SP"D:\Clicks_git\S\SAML10_Touch_Click\SW\library\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Packages\mikroBUS Board Definition API\Uses\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -IP"D:\Clicks_git\S\SAML10_Touch_Click\SW\example\c\PIC\" -IP"D:\Clicks_git\S\SAML10_Touch_Click\SW\library\" -IP"D:\Clicks_git\S\SAML10_Touch_Click\SW\library\HAL\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Packages\mikroBUS Board Definition API\Uses\" "Click_SAML_Touch_PIC.c" "__samltouch_driver.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CString.mcl" "__Lib_Conversions.mcl" "__Lib_UART_c67g12.mcl" "easypicpro_v7_P18F87K22.mcl" "Click_SAML_Touch.pld"	 
+hint: 0	1139	Available RAM: 3841 [bytes], Available ROM: 131072 [bytes]	 
+diagnostics: 0	122	Compilation Started	stdint.h
+error: 31	324	Undeclared identifier 'samltouch_tick' in expression	click_saml_touch_timer.h
+error: 42	324	Undeclared identifier 'samltouch_parser' in expression	Click_SAML_Touch_PIC.c
+error: 59	324	Undeclared identifier 'samltouch_uartDriverInit' in expression	Click_SAML_Touch_PIC.c
+error: 59	317	Operator '' is not applicable to these operands ''	Click_SAML_Touch_PIC.c
+error: 59	402	; expected, but ')' found	Click_SAML_Touch_PIC.c
+error: 59	424	'}' expected ';' found	Click_SAML_Touch_PIC.c
+error: 70	324	Undeclared identifier 'samltouch_process' in expression	Click_SAML_Touch_PIC.c
+diagnostics: 0	122	Compilation Started	stdint.h
+diagnostics: 821	123	Compiled Successfully	__samltouch_driver.c
+hint: 217	1164	Variable 'tmp' has been eliminated by optimizer	__samltouch_driver.c
+hint: 161	1164	Variable 'tmp' has been eliminated by optimizer	__samltouch_driver.c
+hint: 277	1164	Variable 'tmp' has been eliminated by optimizer	__samltouch_driver.c
+hint: 288	1164	Variable 'tmp' has been eliminated by optimizer	__samltouch_driver.c
+hint: 699	1164	Variable 'tmp' has been eliminated by optimizer	__samltouch_driver.c
+hint: 760	1164	Variable 'button_2' has been eliminated by optimizer	__samltouch_driver.c
+hint: 762	1164	Variable 'pSWM' has been eliminated by optimizer	__samltouch_driver.c
+hint: 763	1164	Variable 'pSWL' has been eliminated by optimizer	__samltouch_driver.c
+hint: 764	1164	Variable 'tmp' has been eliminated by optimizer	__samltouch_driver.c
+hint: 765	1164	Variable 'pom' has been eliminated by optimizer	__samltouch_driver.c
+hint: 767	1164	Variable 'slider_lsb' has been eliminated by optimizer	__samltouch_driver.c
+hint: 768	1164	Variable 'slider_msb' has been eliminated by optimizer	__samltouch_driver.c
+error: 0	102	Finished (with errors): 11 feb 2019, 12:02:52	Click_SAML_Touch_PIC.mcppi

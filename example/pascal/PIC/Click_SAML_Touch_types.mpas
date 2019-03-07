@@ -1,0 +1,21 @@
+unit Click_SAML_Touch_types;
+
+type uint8_t  = byte;
+type int8_t   = short;
+type uint16_t = word;
+type int16_t  = integer;
+type uint32_t = dword;
+type int32_t  = longint;
+
+type T_SAMLTOUCH_P = ^const uint8_t;
+
+type samltouch_state_T = record
+
+    button1                   : uint8_t;
+    button2                   : uint8_t;
+    sw_state                  : uint8_t;
+    sw_pos                    : uint16_t;
+	
+end;
+
+end.

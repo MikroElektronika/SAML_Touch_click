@@ -1,0 +1,102 @@
+{
+Example for SAML_Touch Click
+
+    Date          : feb 2019.
+    Author        : Katarina Perendic
+
+Test configuration FT90x :
+    
+    MCU                : FT900
+    Dev. Board         : EasyFT90x v7 
+    FT90x Compiler ver : v2.3.0.0
+
+---
+
+Description :
+
+The application is composed of three sections :
+
+- System Initialization - Initializes UART used for the communcation with SAML Touch module and UART used for infromation logging
+- Application Initialization - Initializes driver init and timer init
+- Application Task - running in parallel core state machine. Check that the button 1 or  button 2 or the active slider is pressed.
+       If it detects that the buttons 1 or 2 are pressed, it logs a button detection message.
+       If it detects that the slider is active, it logs a message that the slider is active and its current position is 0-255.
+
+Additional Functions :
+
+All additional functions such as timer initialization and default handler. 
+
+}
+program Click_SAML_Touch_FT90x;
+
+uses Click_SAML_Touch_types, Click_SAML_Touch_config, Click_SAML_Touch_timer;
+
+var
+    demoText : array[500] of char; 
+    SAML_Touch : samltouch_state_T; 
+    
+procedure samltouch_default_handler(rsp : ^uint8_t; evArgs : ^uint8_t); 
+var
+    tmp : ^char; 
+begin
+    tmp := rsp; 
+    samltouch_parser(tmp, @SAML_Touch); 
+end;
+
+procedure systemInit(); 
+begin
+    mikrobus_uartInit(_MIKROBUS1, @_SAMLTOUCH_UART_CFG[0]); 
+    mikrobus_logInit(_LOG_USBUART, 115200); 
+    mikrobus_logWrite('---- System Init ----', _LOG_LINE); 
+    mikrobus_logWrite('---------------------', _LOG_LINE); 
+end;
+
+procedure applicationInit(); 
+begin
+    samltouch_configTimer(); 
+    samltouch_uartDriverInit(T_SAMLTOUCH_P(@_MIKROBUS1_GPIO), T_SAMLTOUCH_P(@_MIKROBUS1_UART)); 
+    samltouch_coreInit(@samltouch_default_handler, 1500); 
+    samltouch_hfcEnable(1); 
+    timerCounter := 0; 
+end;
+
+procedure applicationTask(); 
+begin
+    samltouch_process(); 
+    if (timerCounter > 100) then 
+    begin
+        if (SAML_Touch.button2 = 1) then 
+        begin
+            mikrobus_logWrite('Button 2 is pressed.', _LOG_LINE); 
+        end
+        else 
+        begin
+            if (SAML_Touch.button1 = 1) then 
+            begin
+                mikrobus_logWrite('Button 1 is pressed.', _LOG_LINE); 
+            end; 
+        end;
+        timerCounter := 0; 
+    end; 
+    if (SAML_Touch.sw_state = 1) then 
+    begin
+        mikrobus_logWrite('Slider is active.', _LOG_LINE); 
+        if (SAML_Touch.sw_pos <> 0) then 
+        begin
+            mikrobus_logWrite('Slider position is  ', _LOG_TEXT); 
+            IntToStr(SAML_Touch.sw_pos, demoText); 
+            mikrobus_logWrite(demoText, _LOG_LINE); 
+        end; 
+    end; 
+end;
+
+begin
+    demoText[0] := 0;
+
+    systemInit(); 
+    applicationInit(); 
+    while (1) do 
+    begin 
+        applicationTask(); 
+    end;
+end.
